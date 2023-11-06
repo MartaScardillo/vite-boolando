@@ -8,35 +8,49 @@ export default {
 </script>
 
 <template>
-    <nav>
-        <div class="container">
-            <div>
-                <ul class="row justify-between">
-                    <li>
-                        <ul class="d-flex">
-                            <li>Donna</li>
-                            <li>Uomo</li>
-                            <li>Bambino</li>
+    <header class="page-header">
+        <nav>
+            <div class="container">
+                <div class="list row align-center justify-between">
+                    <div>
+                        <ul>
+                            <li class="list_item text_white">
+                                <a href="#">Donna</a>
+                            </li>
+                            <li class="list_item text_white">
+                                <a href="#">Uomo</a>
+                            </li>
+                            <li class="list_item text_white">
+                                <a href="#">Bambino</a>
+                            </li>
                         </ul>
-                    </li>
-                    <li>
+                    </div>
+
+                    <div>
                         <img
-                            src="../assets/img/boolean-logo.png"
-                            alt="Boolean logo"
                             class="logo"
+                            src="../assets/img/boolean-logo.png"
+                            alt=""
                         />
-                    </li>
-                    <li>
-                        <ul class="d-flex">
-                            <li>user</li>
-                            <li>heart</li>
-                            <li>shop</li>
+                    </div>
+
+                    <div>
+                        <ul>
+                            <li class="btn list_item">
+                                <a href="#">User</a>
+                            </li>
+                            <li class="btn list_item">
+                                <a href="#">Heart</a>
+                            </li>
+                            <li class="btn list_item">
+                                <a href="#">Shop</a>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 </template>
 
 <style lang="scss" scoped>
@@ -47,12 +61,26 @@ nav {
     width: 100%;
     height: 70px;
     max-height: 70px;
-    background-color: #ff6800;
     z-index: 1;
 }
 
 .logo {
     height: 20px;
     width: 100px;
+}
+
+.list {
+    height: 70px;
+}
+
+.list_item {
+    display: inline-block;
+    padding: 5px;
+}
+
+.btn {
+    height: 30px;
+    display: inline-block;
+    padding: 5px;
 }
 </style>

@@ -8,7 +8,7 @@
 
 a {
     text-decoration: none;
-    color: $text-black;
+    color: currentColor;
 }
 
 ul,
@@ -29,15 +29,19 @@ img {
     display: flex;
 }
 
-.justify-between {
-    justify-content: space-between;
-}
-
 .align-center {
     align-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.text_white {
+    color: $text-white;
 }

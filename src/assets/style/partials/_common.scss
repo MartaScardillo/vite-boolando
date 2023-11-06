@@ -37,11 +37,16 @@ img {
     justify-content: space-between;
 }
 
+.justify-around {
+    justify-content: space-around;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    min-height: 50px;
 }
 
 .text_white {
-    color: $text-white;
+    color: $white;
 }

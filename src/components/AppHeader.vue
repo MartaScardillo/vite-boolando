@@ -56,7 +56,7 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/style/partials/variables' as *;
 nav {
-    background-color: $background-orange;
+    background-color: $orange;
     position: fixed;
     width: 100%;
     height: 70px;

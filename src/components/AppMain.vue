@@ -1,5 +1,6 @@
 <script>
 import AppCard from './AppCard.vue';
+import productsJson from '../db.json';
 
 export default {
     components: {
@@ -8,7 +9,9 @@ export default {
 
     name: 'AppMain',
     data() {
-        return {};
+        return {
+            productsJson: productsJson.products,
+        };
     },
 };
 </script>
@@ -17,12 +20,7 @@ export default {
     <main class="justify-around">
         <div class="container">
             <div class="row">
-                <AppCard />
-                <AppCard />
-                <AppCard />
-                <AppCard />
-                <AppCard />
-                <AppCard />
+                <AppCard v-for="product in productsJson" :product="product" />
             </div>
         </div>
     </main>

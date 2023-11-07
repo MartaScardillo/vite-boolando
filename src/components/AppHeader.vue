@@ -27,11 +27,7 @@ export default {
                     </div>
 
                     <div>
-                        <img
-                            class="logo"
-                            src="../assets/img/boolean-logo.png"
-                            alt=""
-                        />
+                        <img class="logo" src="boolean-logo.png" alt="" />
                     </div>
 
                     <div>

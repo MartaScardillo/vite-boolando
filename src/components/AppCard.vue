@@ -4,26 +4,31 @@ export default {
     data() {
         return {};
     },
+
+    props: {
+        product: Object,
+        saluto: String,
+    },
 };
 </script>
 
 <template>
     <div class="article col-4">
         <a href="#"
-            ><img class="article_image" src="../assets/img/1.webp" alt="" /><img
+            ><img class="article_image" :src="product.frontImage" alt="" /><img
                 class="article_image_hover"
-                src="../assets/img/1b.webp"
+                :src="product.backImage"
                 alt=""
         /></a>
         <span class="heart">&hearts;</span>
         <div class="pop d-flex">
             <span class="discount">-50%</span>
-            <span class="sustain">Sostenibilità</span>
+            <span class="sustain">sostenibile</span>
         </div>
-        <span>Levi's</span>
-        <p class="details">RELAXED FIT TEE UNISEX</p>
+        <span>{{ product.brand }}</span>
+        <p class="details">{{ product.name }}</p>
         <span class="discounted-price">14,99&euro;</span>
-        <span class="price">29,99&euro;</span>
+        <span class="price">{{ product.price }}€</span>
     </div>
 </template>
 

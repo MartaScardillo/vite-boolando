@@ -12,7 +12,7 @@ export default {
 
     methods: {
         favoriteFunction() {
-            this.producct.isInFavorites = !this.product.isInFavorites;
+            this.product.isInFavorites = !this.product.isInFavorites;
         },
 
         discountCalc() {
@@ -56,8 +56,6 @@ export default {
                 v-for="badge in product.badges"
                 >{{ badge.value }}</span
             >
-            <!-- <span class="discount">-50%</span>
-            <span class="sustain">sostenibile</span> -->
         </div>
         <span>{{ product.brand }}</span>
         <p class="details">{{ product.name.toUpperCase() }}</p>

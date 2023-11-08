@@ -123,6 +123,7 @@ export default {
     text-align: center;
     padding: 5px;
     order: -1;
+    margin-left: 15px;
 }
 
 .tag {

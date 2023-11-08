@@ -9,6 +9,29 @@ export default {
         product: Object,
         saluto: String,
     },
+
+    methods: {
+        favoriteFunction() {
+            this.producct.isInFavorites = !this.product.isInFavorites;
+        },
+
+        discountCalc() {
+            for (let i = 0; i < this.product.badges.length; i++) {
+                if (this.product.badges[i].type === 'discount') {
+                    const discountValue = parseFloat(
+                        this.product.badges[i].value
+                    );
+                    const finalPrice = (
+                        (this.product.price * (100 + discountValue)) /
+                        100
+                    ).toFixed(2);
+
+                    return finalPrice;
+                }
+            }
+            return this.product.price;
+        },
+    },
 };
 </script>
 
@@ -20,15 +43,28 @@ export default {
                 :src="product.backImage"
                 alt=""
         /></a>
-        <span class="heart">&hearts;</span>
+        <span
+            class="heart"
+            @click="($event) => favoriteFunction()"
+            :class="product.isInFavorites === true ? 'favorite' : ''"
+            >&hearts;</span
+        >
         <div class="pop d-flex">
-            <span class="discount">-50%</span>
-            <span class="sustain">sostenibile</span>
+            <span
+                class=""
+                :class="badge.type"
+                v-for="badge in product.badges"
+                >{{ badge.value }}</span
+            >
+            <!-- <span class="discount">-50%</span>
+            <span class="sustain">sostenibile</span> -->
         </div>
         <span>{{ product.brand }}</span>
-        <p class="details">{{ product.name }}</p>
-        <span class="discounted-price">14,99&euro;</span>
-        <span class="price">{{ product.price }}€</span>
+        <p class="details">{{ product.name.toUpperCase() }}</p>
+        <span class="discounted-price">{{ discountCalc() }}€</span>
+        <span class="price" v-show="product.price != discountCalc()"
+            >{{ product.price }}€</span
+        >
     </div>
 </template>
 
@@ -86,9 +122,10 @@ export default {
     width: 50px;
     text-align: center;
     padding: 5px;
+    order: -1;
 }
 
-.sustain {
+.tag {
     background-color: $green;
     color: $white;
     margin-left: 15px;
@@ -105,5 +142,9 @@ export default {
 
 .price {
     text-decoration-line: line-through;
+}
+
+.favorite {
+    color: $red;
 }
 </style>

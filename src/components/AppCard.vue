@@ -36,7 +36,7 @@ export default {
 </script>
 
 <template>
-    <div class="article col-4">
+    <div class="article col-4" @click="$emit('show', product)">
         <a href="#"
             ><img class="article_image" :src="product.frontImage" alt="" /><img
                 class="article_image_hover"
@@ -47,8 +47,8 @@ export default {
             class="heart"
             @click="($event) => favoriteFunction()"
             :class="product.isInFavorites === true ? 'favorite' : ''"
-            >&hearts;</span
-        >
+            ><font-awesome-icon :icon="['fas', 'heart']"
+        /></span>
         <div class="pop d-flex">
             <span
                 class=""

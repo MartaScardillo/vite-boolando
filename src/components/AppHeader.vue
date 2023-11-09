@@ -2,7 +2,15 @@
 export default {
     name: 'AppHeader',
     data() {
-        return {};
+        return {
+            categories: ['Donna', 'Uomo', 'Bambino'],
+            icons: [
+                ['fas', 'user'],
+                ['fas', 'heart'],
+                ['fas', 'cart-shopping'],
+            ],
+            logo: './boolean-logo.png',
+        };
     },
 };
 </script>
@@ -14,32 +22,28 @@ export default {
                 <div class="list row align-center justify-between">
                     <div>
                         <ul>
-                            <li class="list_item text_white">
-                                <a href="#">Donna</a>
-                            </li>
-                            <li class="list_item text_white">
-                                <a href="#">Uomo</a>
-                            </li>
-                            <li class="list_item text_white">
-                                <a href="#">Bambino</a>
+                            <li
+                                class="list_item text_white"
+                                v-for="category in categories"
+                            >
+                                <a href="#">{{ category }}</a>
                             </li>
                         </ul>
                     </div>
 
                     <div>
-                        <img class="logo" src="boolean-logo.png" alt="" />
+                        <img class="logo" :src="logo" alt="" />
                     </div>
 
                     <div>
                         <ul>
-                            <li class="btn list_item">
-                                <a href="#">User</a>
-                            </li>
-                            <li class="btn list_item">
-                                <a href="#">Heart</a>
-                            </li>
-                            <li class="btn list_item">
-                                <a href="#">Shop</a>
+                            <li class="btn list_item" v-for="icon in icons">
+                                <a href="#"
+                                    ><font-awesome-icon
+                                        class="icon"
+                                        :icon="icon"
+                                    ></font-awesome-icon
+                                ></a>
                             </li>
                         </ul>
                     </div>

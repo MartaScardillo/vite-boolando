@@ -15,22 +15,22 @@ export default {
             this.product.isInFavorites = !this.product.isInFavorites;
         },
 
-        discountCalc() {
-            for (let i = 0; i < this.product.badges.length; i++) {
-                if (this.product.badges[i].type === 'discount') {
-                    const discountValue = parseFloat(
-                        this.product.badges[i].value
-                    );
-                    const finalPrice = (
-                        (this.product.price * (100 + discountValue)) /
-                        100
-                    ).toFixed(2);
+        // discountCalc() {
+        //     for (let i = 0; i < this.product.badges.length; i++) {
+        //         if (this.product.badges[i].type === 'discount') {
+        //             const discountValue = parseFloat(
+        //                 this.product.badges[i].value
+        //             );
+        //             const finalPrice = (
+        //                 (this.product.price * (100 + discountValue)) /
+        //                 100
+        //             ).toFixed(2);
 
-                    return finalPrice;
-                }
-            }
-            return this.product.price;
-        },
+        //             return finalPrice;
+        //         }
+        //     }
+        //     return this.product.price;
+        // },
     },
 };
 </script>
@@ -59,8 +59,8 @@ export default {
         </div>
         <span>{{ product.brand }}</span>
         <p class="details">{{ product.name.toUpperCase() }}</p>
-        <span class="discounted-price">{{ discountCalc() }}€</span>
-        <span class="price" v-show="product.price != discountCalc()"
+        <span class="discounted-price">{{ product.finalPrice }}€</span>
+        <span class="price" v-show="product.price != product.finalPrice"
             >{{ product.price }}€</span
         >
     </div>

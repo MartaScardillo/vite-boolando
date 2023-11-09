@@ -17,8 +17,26 @@ export default {
     },
 
     created() {
-        axios.get('http://localhost:3000/products').then((Response) => {
-            this.store.products = Response.data;
+        axios.get('http://localhost:3000/products').then((response) => {
+            const products = response.data;
+
+            products.forEach((product) => {
+                // Scorro tutti i prodotti
+                product.badges.forEach((badge) => {
+                    // Scorro tutti i badge
+                    if (badge.type === 'discount') {
+                        // Se il badge è un discount
+                        const discountValue = parseFloat(badge.value);
+                        const finalPrice = (
+                            (product.price * (100 + discountValue)) /
+                            100
+                        ).toFixed(2);
+                        product.finalPrice = finalPrice;
+                    }
+                });
+            });
+            console.log(products);
+            this.store.products = products;
         });
     },
 
@@ -49,17 +67,21 @@ export default {
         </div>
 
         <div class="modal" v-if="open">
-            <div class="card">
-                <div class="card_header d-flex justify-between">
-                    <span>banana</span>
+            <div class="card d-flex">
+                <div class="card_header">
+                    <img :src="selectedProduct.frontImage" alt="" />
+                </div>
+                <div class="card_body d-flex justify-between">
+                    <div class="info">
+                        <span>{{ selectedProduct.brand.toUpperCase() }}</span>
+                        <span>{{ selectedProduct.name }}</span>
+                        <span>{{ selectedProduct.finalPrice }}€</span>
+                    </div>
                     <font-awesome-icon
                         @click="closeModal"
                         :icon="['fas', 'xmark']"
                         class="pointer"
                     />
-                </div>
-                <div class="card_body">
-                    <span>banana</span>
                 </div>
             </div>
         </div>
@@ -92,5 +114,15 @@ export default {
     right: 0;
     z-index: 40;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.info {
+    width: 100%;
+    min-width: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 </style>
